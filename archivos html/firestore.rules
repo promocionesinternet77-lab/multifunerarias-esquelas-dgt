@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Colección principal de esquelas memoriales
+    match /obituaries/{obituaryId} {
+      // Lectura pública: permite abrir la esquela desde cualquier celular, computadora o lector QR
+      allow read: if true;
+      
+      // Creación y actualización: permite registrar esquelas y actualizar contadores (velas, mensajes)
+      allow create, update: if true;
+      
+      // Eliminación
+      allow delete: if true;
+      
+      // Subcolección de mensajes de condolencias vinculados a cada esquela
+      match /messages/{messageId} {
+        // Lectura pública de condolencias
+        allow read: if true;
+        
+        // Creación pública de condolencias
+        allow create: if request.resource.data.authorName is string
+                      && request.resource.data.content is string;
+                      
+        // Modificación o moderación
+        allow update, delete: if true;
+      }
+    }
+  }
+}
