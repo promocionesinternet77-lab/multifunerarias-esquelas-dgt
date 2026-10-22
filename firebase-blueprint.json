@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "obituaries": {
+      "description": "Colección principal de esquelas digitales (diseñada para hasta 2,000 esquelas)",
+      "fields": {
+        "id": { "type": "string", "description": "Identificador único de la esquela" },
+        "slug": { "type": "string", "description": "URL amigable indexada" },
+        "fullName": { "type": "string", "description": "Nombre completo de la persona fallecida" },
+        "birthDate": { "type": "string", "description": "Fecha de nacimiento (YYYY-MM-DD)" },
+        "deathDate": { "type": "string", "description": "Fecha de fallecimiento (YYYY-MM-DD)" },
+        "photoUrl": { "type": "string", "description": "URL de la fotografía en Firebase Storage" },
+        "epitaph": { "type": "string", "description": "Mensaje principal de homenaje y despedida" },
+        "biography": { "type": "string", "description": "Semblanza de vida o memoria" },
+        "ceremonyDetails": { "type": "string", "description": "Horarios y lugar de velación o misa" },
+        "familyQuote": { "type": "string", "description": "Cita o agradecimiento familiar" },
+        "createdAt": { "type": "string", "description": "Marca de tiempo de creación ISO" },
+        "expiresAt": { "type": "string", "description": "Marca de tiempo de expiración (30 días)" },
+        "retentionDays": { "type": "number", "description": "Días de retención configurados (ej: 30)" },
+        "maxMessages": { "type": "number", "description": "Límite estricto de mensajes (50)" },
+        "messageCount": { "type": "number", "description": "Contador de mensajes actuales (0 a 50)" },
+        "candlesLitCount": { "type": "number", "description": "Contador de velas virtuales encendidas" },
+        "isActive": { "type": "boolean", "description": "Estado activo o archivado" }
+      }
+    },
+    "obituaries/{obituaryId}/messages": {
+      "description": "Subcolección de condolencias para evitar exceder 1MB por documento (hasta 50 por esquela, 100,000 en total)",
+      "fields": {
+        "id": { "type": "string", "description": "Identificador del mensaje" },
+        "obituaryId": { "type": "string", "description": "ID de la esquela padre" },
+        "authorName": { "type": "string", "description": "Nombre de quien escribe las condolencias" },
+        "relationship": { "type": "string", "description": "Parentesco o vínculo" },
+        "originalContent": { "type": "string", "description": "Texto original redactado por el usuario" },
+        "content": { "type": "string", "description": "Texto final aprobado (máx 250 palabras)" },
+        "isAiEnriched": { "type": "boolean", "description": "Indica si se enriqueció con IA" },
+        "symbol": { "type": "string", "description": "candle | flower | prayer | dove" },
+        "createdAt": { "type": "string", "description": "Fecha y hora del envío" },
+        "approved": { "type": "boolean", "description": "Estado de moderación" }
+      }
+    }
+  }
+}

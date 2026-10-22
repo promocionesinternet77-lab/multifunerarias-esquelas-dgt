@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Esquela Digital y Libro de Condolencias 2 auto",
+  "description": "Aplicación elegante para crear esquelas digitales con código QR, libro de condolencias con límite de 50 mensajes y enriquecimiento de redacción con IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
